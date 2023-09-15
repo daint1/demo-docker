@@ -1,4 +1,16 @@
 version: "3.8"
 services:
   server:
+    build:
+      dockerfile: Dockerfile
+    ports:
+      - 9000:9000
+    environment:
+      DB_URL: postgres://db/vidly
   db:
+    image: postgres:14
+    ports:
+      - 5432:5432
+    volumes:
+      - vidly:/data/db
+volumes:
